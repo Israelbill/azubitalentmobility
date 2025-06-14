@@ -1,0 +1,27 @@
+Network Setup
+Custom Bridge Network (app_network) ensures secure communication between containers.
+
+Services communicate via Docker DNS names:
+
+Frontend → Backend: http://backend:5000
+
+Backend → Database: db:5432
+
+Exposed Ports
+Service	Port (Host → Container)	Purpose
+Frontend	80:80	React App (HTTP)
+Backend	5000:5000	Node.js API
+Database	5432:5432	PostgreSQL (Debugging)
+Security Best Practices
+Database Credentials (Change in docker-compose.yml for production!):
+
+yaml
+environment:
+  POSTGRES_USER: admin
+  POSTGRES_PASSWORD: your_secure_password  # Change this!
+Never commit secrets in Git. Use .env files for production:
+
+bash
+# .env file (add to .gitignore)
+DB_PASSWORD=your_secure_password
+Limit exposed ports (e.g., remove 5432:5432 in production).
