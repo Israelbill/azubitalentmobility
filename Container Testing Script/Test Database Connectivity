@@ -1,0 +1,9 @@
+Method 1: Direct PSQL Connection
+# Connect to the database container
+docker exec -it todo_db psql -U admin -d todo
+
+# Inside PostgreSQL shell, run:
+\dt                     # List tables
+SELECT * FROM todos;     # Query data (adjust table name as needed)
+\q                      # Exit
+
