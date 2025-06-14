@@ -1,0 +1,9 @@
+# GET all todos
+curl -X GET http://localhost:5000/api/todos
+
+# POST a new todo
+curl -X POST http://localhost:5000/api/todos \
+  -H "Content-Type: application/json" \
+  -d '{"task": "Test Docker", "completed": false}'
+
+# Expected response: 201 Created + JSON of the new todo
