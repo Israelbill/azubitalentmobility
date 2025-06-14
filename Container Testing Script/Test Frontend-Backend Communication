@@ -1,0 +1,18 @@
+Ensure the React frontend can reach the backend API:
+
+Method 1: Browser DevTools
+Open http://localhost in your browser.
+
+Open Developer Tools (F12) → Network Tab.
+
+Check if API calls to http://localhost:5000/api/todos return 200 OK.
+
+Curl from Frontend Container
+# Enter the frontend container
+docker exec -it todo_frontend sh
+
+# Test backend connectivity (using Docker's internal network)
+wget -qO- http://backend:5000/api/todos
+
+# Expected output: JSON response from backend
+exit
