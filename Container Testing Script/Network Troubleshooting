@@ -1,0 +1,6 @@
+# Inspect Docker network
+docker network inspect fullstack-todo-list_app_network
+
+# Test connectivity between containers
+docker exec -it todo_frontend ping backend
+docker exec -it todo_backend ping db
