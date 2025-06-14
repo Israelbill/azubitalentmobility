@@ -1,0 +1,45 @@
+Troubleshooting Guide
+Common Issues & Fixes
+1. Frontend Not Loading
+Symptom: White screen or connection errors.
+
+Fix:
+
+Check if the frontend container is running:
+
+bash
+docker logs todo_frontend
+Ensure the backend API is reachable (test http://backend:5000/api/todos from inside the frontend container).
+
+2. Backend Failing to Connect to Database
+Symptom: Error: connect ECONNREFUSED in backend logs.
+
+Fix:
+
+Verify the database is healthy:
+
+bash
+docker logs todo_db
+Check environment variables in docker-compose.yml (e.g., DB_HOST=db).
+
+3. Database Data Not Persisting
+Symptom: Data resets after docker-compose down.
+
+Fix:
+
+Ensure the postgres_data volume is not deleted:
+
+bash
+docker volume inspect fullstack-todo-list_postgres_data
+Avoid docker-compose down -v unless intentional.
+
+4. Port Conflicts
+Symptom: Error: port already allocated.
+
+Fix:
+
+Stop conflicting services or change host ports in docker-compose.yml:
+
+yaml
+ports:
+  - "8080:80"  # New frontend port
