@@ -1,0 +1,8 @@
+# Check running containers
+docker ps -a
+
+# Expected output:
+# CONTAINER ID   IMAGE                STATUS      PORTS
+# ...            todo_frontend        Up          80/tcp
+# ...            todo_backend         Up          5000/tcp
+# ...            postgres:15-alpine   Up (healthy) 5432/tcp
